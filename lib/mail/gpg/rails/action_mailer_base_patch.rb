@@ -8,8 +8,8 @@ module Mail
 
         def self.apply
           unless ActionMailer::Base < InstanceMethods
-            ActionMailer::Base.prepend InstanceMethods
-            ActionMailer::Base.singleton_class.prepend ClassMethods
+            ActionMailer::Base.send(:prepend, InstanceMethods)
+            ActionMailer::Base.singleton_class.send(:prepend, ClassMethods)
           end
         end
 
